@@ -4,6 +4,9 @@ import { PostService } from './services/post.service'
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CustomMaterialModule } from './core/material.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -12,7 +15,10 @@ import { PostDetailsComponent } from './post-details/post-details.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    CustomMaterialModule,
+    FormsModule
   ],
   providers: [PostService],
   bootstrap: [AppComponent]
