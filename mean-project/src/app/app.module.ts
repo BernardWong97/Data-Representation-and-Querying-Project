@@ -8,19 +8,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomMaterialModule } from './core/material.module';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { AppRoutingModule } from './core/app.routing.module';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostDetailsComponent,
     LoginComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
     CustomMaterialModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [PostService],
   bootstrap: [AppComponent]
