@@ -1,0 +1,11 @@
+.fill-remaining-space {
+    /* This fills the remaining space, by using flexbox.*/
+    flex: 1 1 auto;
+}
+
+.login-card {
+    max-width: 200px;
+    position: fixed;
+    top: 25%;
+    left: 40%;
+}
