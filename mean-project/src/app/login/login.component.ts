@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-login',
@@ -7,12 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  users: any;
   username: string;
   password: string;
 
-  constructor(private router: Router) { }
+  constructor(private us: UsersService, private router: Router) { }
 
   ngOnInit() {
+    // get user data from mongodb
+    this.us.getUsersData().subscribe(data => {
+      this.users = data;
+    });
+
+    console.log("Users data successfully get.");
   }
 
   enterBtn(event) {
@@ -22,10 +30,13 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if(this.username == 'admin' && this.password == 'admin'){
-      this.router.navigate(["movie_database"]);
-    }else {
-      alert("Invalid credentials");
+    for(let user of this.users) {
+      if(this.username == user.username && this.password == user.password){
+        this.router.navigate(["movie_database"]);
+      }else {
+        alert("Invalid credentials");
+      }
     }
+    
   }
 }
