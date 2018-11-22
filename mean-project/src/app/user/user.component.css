@@ -1,0 +1,10 @@
+.loading-card {
+    max-width: 200px;
+    position: fixed;
+    top: 25%;
+    left: 40%;
+}
+
+.spinner {
+    padding-left: 2.5em;
+}

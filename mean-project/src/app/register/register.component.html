@@ -8,26 +8,35 @@
         <tr>
           <td>
             <mat-form-field>
-              <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+              <input matInput placeholder="Username" [(ngModel)]="username" name="username" pattern=".{5,}" required>
             </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
             <mat-form-field>
-              <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+              <input 
+                matInput 
+                id="pwField" 
+                placeholder="Password" 
+                [(ngModel)]="password" 
+                type="password" 
+                name="password"  
+                required
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
             </mat-form-field>
           </td>
         </tr>
         <tr>
           <td>
             <mat-form-field>
-              <input matInput placeholder="Confirm Password" [(ngModel)]="rePassword" type="password" name="rePassword" required>
+              <input matInput id="rpwField" placeholder="Confirm Password" [(ngModel)]="rePassword" type="password" name="rePassword" required>
             </mat-form-field>
           </td>
         </tr>
       </table>
-      <button mat-raised-button id="regSubmit" type="submit" color="primary">Register</button>
+      <button mat-raised-button id="regSubmit" (click)="register()" type="submit" color="primary">Register</button>
     </form>
   </mat-card-content>
 </mat-card>

@@ -17,7 +17,7 @@ export class UsersService {
     return this.http.get("http://127.0.0.1:8081/api/users");
   }
 
-  getUsers() {
+  getUser() {
     return [...this.users];
   }
 

@@ -6,10 +6,10 @@ import { RegisterComponent } from '../register/register.component';
 import { PostDetailsComponent } from '../post-details/post-details.component';
 
 const appRoutes: Routes = [
-    { path: 'user', component: UserComponent },
+    { path: 'user/:username', component: UserComponent },
     { path: '', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
-    { path: 'movie_database', component: PostDetailsComponent }
+    { path: 'movie_database', component: PostDetailsComponent },
 ];
 
 @NgModule({

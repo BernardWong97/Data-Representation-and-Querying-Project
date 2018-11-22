@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from '../services/users.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
 
-  constructor(private us: UsersService, private router: Router) { }
+  constructor(private us: UsersService, private router: Router, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     // get user data from mongodb
@@ -32,11 +33,10 @@ export class LoginComponent implements OnInit {
   login() {
     for(let user of this.users) {
       if(this.username == user.username && this.password == user.password){
-        this.router.navigate(["movie_database"]);
+        this.router.navigate(["user", this.username]);
       }else {
-        alert("Invalid credentials");
+        this.snackBar.open("Username or Password incorrect, please try again.", "OK", {duration: 5000});
       }
     }
-    
   }
 }
