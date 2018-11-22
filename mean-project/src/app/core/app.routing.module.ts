@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserComponent } from '../user/user.component';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
+import { ReloadComponent } from '../reload/reload.component';
 import { PostDetailsComponent } from '../post-details/post-details.component';
 
 const appRoutes: Routes = [
     { path: 'user/:username', component: UserComponent },
+    { path: 'reload/:component', component: ReloadComponent },
     { path: '', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'movie_database', component: PostDetailsComponent },

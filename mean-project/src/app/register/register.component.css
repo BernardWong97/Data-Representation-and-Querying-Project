@@ -5,6 +5,39 @@
     left: 40%;
 }
 
+.password-card {
+    max-width: 100px;
+    position: fixed;
+    top: 25%;
+    left: 70%;
+}
+
 .card-title {
     padding-left: 1.8em;
+}
+
+.pw-font {
+    font-size: 10px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+    color: green;
+}
+
+.valid:before {
+    position: relative;
+    left: -35px;
+    content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+    color: red;
+}
+
+.invalid:before {
+    position: relative;
+    left: -35px;
+    content: "✖";
 }
