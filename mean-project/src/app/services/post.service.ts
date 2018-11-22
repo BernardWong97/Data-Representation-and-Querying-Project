@@ -14,5 +14,4 @@ export class PostService {
   getPostsData(): Observable<any> {
     return this.http.get("https://api.themoviedb.org/3/discover/movie?api_key=a796afb241021ae3e224be810d89a5c8&sort_by=popularity.desc");
   }
-
 }

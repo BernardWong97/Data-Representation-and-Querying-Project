@@ -7,7 +7,7 @@ import { PostDetailsComponent } from '../post-details/post-details.component';
 
 const appRoutes: Routes = [
     { path: 'user', component: UserComponent },
-    { path: '', component: LoginComponent },
+    { path: '', component: RegisterComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'movie_database', component: PostDetailsComponent }
 ];
