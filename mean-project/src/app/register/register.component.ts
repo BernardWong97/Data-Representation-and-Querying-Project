@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit {
   continue: boolean = true;
   errMessage: string;
   display: boolean = false;
+  pwValid: boolean = false;
 
   constructor(private router:Router, private us:UsersService, private snackBar: MatSnackBar) { }
 
@@ -37,6 +38,11 @@ export class RegisterComponent implements OnInit {
       this.continue = false;
     }
 
+    if(!this.pwValid){
+      this.errMessage = "Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters.";
+      this.continue = false;
+    }
+
     if(this.password != this.rePassword){
       this.errMessage = "Passwords does not match.";
       this.continue = false;
@@ -51,7 +57,7 @@ export class RegisterComponent implements OnInit {
 
     if(!this.continue) {
       document.getElementById("regSubmit").setAttribute("type", "reset");
-      let snackBarRef = this.snackBar.open(this.errMessage, "OK", {duration: 5000});
+      let snackBarRef = this.snackBar.open(this.errMessage, "OK");
       snackBarRef.onAction().subscribe(() => {
         this.router.navigate(["reload", "register"]);
       });
@@ -119,6 +125,12 @@ export class RegisterComponent implements OnInit {
         length.classList.remove("valid");
         length.classList.add("invalid");
       }
+
+      if(letter.classList.contains("valid") && 
+      capital.classList.contains("valid") && 
+        number.classList.contains("valid") && 
+        length.classList.contains("valid"))
+        scope.pwValid = true;
     }
   }
 }

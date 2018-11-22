@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
       if(this.username == user.username && this.password == user.password){
         this.router.navigate(["user", this.username]);
       }else {
+        setTimeout(()=>(<HTMLInputElement>document.getElementById("pw")).value = "", 1);
         this.snackBar.open("Username or Password incorrect, please try again.", "OK", {duration: 5000});
       }
     }
