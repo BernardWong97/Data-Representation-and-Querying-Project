@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { DialogComponent } from './dialog/dialog.component';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +12,18 @@ export class AppComponent {
   title = 'mean-project';
   login: boolean;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public dialog: MatDialog) { }
 
-  logout(){
-    this.router.navigate([""]);
-    this.login = false;
+  openDialog(){
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      data => this.login = data
+    );
   }
 }

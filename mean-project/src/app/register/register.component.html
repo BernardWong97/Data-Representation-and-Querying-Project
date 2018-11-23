@@ -37,7 +37,10 @@
           </td>
         </tr>
       </table>
-      <button mat-raised-button [disabled]="!continue" id="regSubmit" (click)="register()" type="submit" color="primary">Register</button>
+      <mat-card-actions>
+          <button mat-raised-button [disabled]="!continue" id="regSubmit" (click)="register()" type="submit" color="primary">Register</button>
+          <button mat-raised-button [disabled]="!continue" [routerLink]="['/']" color="primary">Back</button>
+      </mat-card-actions>
     </form>
   </mat-card-content>
 </mat-card>

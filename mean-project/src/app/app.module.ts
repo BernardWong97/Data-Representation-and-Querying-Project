@@ -13,6 +13,8 @@ import { UserComponent } from './user/user.component';
 import { RegisterComponent } from './register/register.component';
 import { ReloadComponent } from './reload/reload.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { UsersService } from './services/users.service';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
     RegisterComponent,
     ReloadComponent,
     MovieDetailsComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [PostService],
-  bootstrap: [AppComponent]
+  providers: [PostService, UsersService],
+  bootstrap: [AppComponent],
+  entryComponents: [DialogComponent]
 })
 export class AppModule { }
