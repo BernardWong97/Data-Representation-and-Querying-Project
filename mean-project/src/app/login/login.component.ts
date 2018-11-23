@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from '../services/users.service';
 import { MatSnackBar } from '@angular/material';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   password: string;
   correctUser: boolean = false;
 
-  constructor(private us: UsersService, private router: Router, private snackBar: MatSnackBar) { }
+  constructor(private us: UsersService, private router: Router, private snackBar: MatSnackBar, private app: AppComponent) { }
 
   ngOnInit() {
     // get user data from mongodb
@@ -39,6 +40,7 @@ export class LoginComponent implements OnInit {
 
     if(this.correctUser){
       this.router.navigate(["user", this.username]);
+      this.app.login = true;
     } else {
       setTimeout(()=>(<HTMLInputElement>document.getElementById("pw")).value = "", 1);
       this.snackBar.open("Username or Password incorrect, please try again.", "OK", {duration: 5000});
