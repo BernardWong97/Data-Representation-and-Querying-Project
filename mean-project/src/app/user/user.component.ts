@@ -21,7 +21,7 @@ export class UserComponent implements OnInit {
     console.log("Users data successfully get.");
     
     this.lgUser = this.route.snapshot.params['username'];
-    setTimeout(()=>this.router.navigate(["movie_database"]), 3000);
+    setTimeout(()=>this.router.navigate(["movie-database"]), 3000);
   }
 
 }

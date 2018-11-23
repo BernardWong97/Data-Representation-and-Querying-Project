@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   users: any;
   username: string;
   password: string;
+  correctUser: boolean = false;
 
   constructor(private us: UsersService, private router: Router, private snackBar: MatSnackBar) { }
 
@@ -32,12 +33,15 @@ export class LoginComponent implements OnInit {
 
   login() {
     for(let user of this.users) {
-      if(this.username == user.username && this.password == user.password){
-        this.router.navigate(["user", this.username]);
-      }else {
-        setTimeout(()=>(<HTMLInputElement>document.getElementById("pw")).value = "", 1);
-        this.snackBar.open("Username or Password incorrect, please try again.", "OK", {duration: 5000});
-      }
+      if(this.username == user.username && this.password == user.password)
+        this.correctUser = true;
+    }
+
+    if(this.correctUser){
+      this.router.navigate(["user", this.username]);
+    } else {
+      setTimeout(()=>(<HTMLInputElement>document.getElementById("pw")).value = "", 1);
+      this.snackBar.open("Username or Password incorrect, please try again.", "OK", {duration: 5000});
     }
   }
 }

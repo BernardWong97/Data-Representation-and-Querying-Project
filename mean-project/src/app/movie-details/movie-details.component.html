@@ -1,0 +1,14 @@
+<mat-card class="overview-card">
+  <mat-card-header>
+    <mat-card-title class="title">Overview</mat-card-title>
+  </mat-card-header>
+  <img mat-card-image src="https://image.tmdb.org/t/p/w500{{movie.backdrop_path}}">
+  <mat-card-content>
+    <p>
+      {{movie.overview}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button [routerLink]="['/movie-database']" color="primary">Back</button>
+  </mat-card-actions>
+</mat-card>

@@ -1,5 +1,10 @@
-<ul>
-  <li *ngFor="let m of movies">
-    <p>{{m.title}}</p>
-    <img id="moviePoster" width="100px" height="100px" src="https://image.tmdb.org/t/p/w500{{m.poster_path}}">
-</ul>
+<mat-list>
+    <mat-list-item class="lists" matRipple [matRippleCentered]="true" *ngFor="let m of movies; let i = index" (click)="showOverview(i)">
+        <p mat-line>{{m.title}}</p>
+        <div class="imgContainer"><img id="moviePoster" width="100px" height="100px" src="https://image.tmdb.org/t/p/w500{{m.poster_path}}"></div>
+        <p mat-line>Release Date: {{m.release_date}}</p>
+        <p mat-line>Popularity: {{m.popularity}}</p>
+        <p mat-line></p>
+        <mat-divider [inset]="true"></mat-divider>
+    </mat-list-item>
+</mat-list>

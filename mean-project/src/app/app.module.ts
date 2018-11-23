@@ -12,6 +12,7 @@ import { AppRoutingModule } from './core/app.routing.module';
 import { UserComponent } from './user/user.component';
 import { RegisterComponent } from './register/register.component';
 import { ReloadComponent } from './reload/reload.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ReloadComponent } from './reload/reload.component';
     UserComponent,
     RegisterComponent,
     ReloadComponent,
+    MovieDetailsComponent,
   ],
   imports: [
     BrowserModule,
