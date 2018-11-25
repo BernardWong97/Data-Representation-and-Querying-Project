@@ -15,6 +15,7 @@ import { ReloadComponent } from './reload/reload.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { UsersService } from './services/users.service';
 import { DialogComponent } from './dialog/dialog.component';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DialogComponent } from './dialog/dialog.component';
     RegisterComponent,
     ReloadComponent,
     MovieDetailsComponent,
-    DialogComponent
+    DialogComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,

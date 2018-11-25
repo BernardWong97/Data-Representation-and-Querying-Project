@@ -10,9 +10,9 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
 })
 export class AppComponent {
   title = 'mean-project';
-  login: boolean;
+  login: boolean = true;
 
-  constructor(private router: Router, public dialog: MatDialog) { }
+  constructor(private router: Router, public dialog: MatDialog) {}
 
   openDialog(){
     const dialogConfig = new MatDialogConfig();

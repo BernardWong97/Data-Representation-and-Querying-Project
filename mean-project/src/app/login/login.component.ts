@@ -19,6 +19,10 @@ export class LoginComponent implements OnInit {
   constructor(private us: UsersService, private router: Router, private snackBar: MatSnackBar, private app: AppComponent) { }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.app.login = false;
+    });
+
     // get user data from mongodb
     this.us.getUsersData().subscribe(data => {
       this.users = data;
@@ -49,6 +53,7 @@ export class LoginComponent implements OnInit {
     if(this.correctUser){
       this.router.navigate(["user", this.username]);
       this.app.login = true;
+      sessionStorage.setItem("username", this.username);
     } else {
       setTimeout(()=>(<HTMLInputElement>document.getElementById("pw")).value = "", 1);
       this.snackBar.open(this.errMessage, "OK", {duration: 5000});
