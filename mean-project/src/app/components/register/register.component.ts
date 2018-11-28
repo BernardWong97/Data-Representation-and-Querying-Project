@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { UsersService } from '../services/users.service';
+import { UsersService } from '../../services/users.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-register',
@@ -19,9 +20,13 @@ export class RegisterComponent implements OnInit {
   display: boolean = false;
   pwValid: boolean = false;
 
-  constructor(private router:Router, private us:UsersService, private snackBar: MatSnackBar) { }
+  constructor(private router:Router, private us:UsersService, private snackBar: MatSnackBar, private app: AppComponent) { }
 
   ngOnInit(){
+    setTimeout(() => {
+      this.app.login = false;
+    });
+
     // get user data from mongodb
     this.us.getUsersData().subscribe(data => {
       this.users = data;
@@ -67,6 +72,8 @@ export class RegisterComponent implements OnInit {
   onAddUser(form: NgForm) {
     var scopeName = this.username;
     this.us.addUser(form.value.username, form.value.password).subscribe();
+    this.app.login = true;
+    this.continue = false;
     this.snackBar.open("Register succesfull! Auto logging you in!", "OK", {duration: 3000});
     setTimeout(()=>{
       this.router.navigate(["user", scopeName]);

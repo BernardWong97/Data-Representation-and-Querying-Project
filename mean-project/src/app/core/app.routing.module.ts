@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserComponent } from '../user/user.component';
-import { LoginComponent } from '../login/login.component';
-import { RegisterComponent } from '../register/register.component';
-import { ReloadComponent } from '../reload/reload.component';
-import { PostDetailsComponent } from '../post-details/post-details.component';
-import { MovieDetailsComponent } from '../movie-details/movie-details.component';
-import { AccountComponent } from '../account/account.component';
+import { UserComponent } from '../components/user/user.component';
+import { LoginComponent } from '../components/login/login.component';
+import { RegisterComponent } from '../components/register/register.component';
+import { ReloadComponent } from '../components/reload/reload.component';
+import { PostDetailsComponent } from '../components/post-details/post-details.component';
+import { MovieDetailsComponent } from '../components/movie-details/movie-details.component';
+import { AccountComponent } from '../components/account/account.component';
 
 const appRoutes: Routes = [
     { path: 'user/:username', component: UserComponent },

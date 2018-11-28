@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { DialogComponent } from './dialog/dialog.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 
 @Component({
