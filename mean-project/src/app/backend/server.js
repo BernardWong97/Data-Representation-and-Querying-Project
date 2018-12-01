@@ -25,6 +25,7 @@ app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT, OPTIONS");
     res.header("Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept");
     next();
@@ -41,11 +42,27 @@ app.post('/api/users', function(req, res){
     });
 })
 
+app.get('/getUser/:username', function(req, res){
+    users.find({ 'username': req.params.username },
+    function(err, user) {
+        if (err)
+            res.send(err)
+        res.json(user);
+    });
+})
+
 app.get('/api/users', function(req, res){
     users.find(function(err, users) {
         if (err)
             res.send(err)
         res.json(users);
+    });
+})
+
+app.put('/api/users/:id', function(req,res){
+    users.findByIdAndUpdate(req.params.id, req.body, function (err, post) {
+        if (err) return next(err);
+            res.json(post);
     });
 })
 

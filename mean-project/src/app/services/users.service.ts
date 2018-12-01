@@ -16,16 +16,20 @@ export class UsersService {
   getUsersData(): Observable<any> {
     return this.http.get("http://127.0.0.1:8081/api/users");
   }
-
-  getUser() {
-    return [...this.users];
+  
+  getUser(username) {
+    return this.http.get("http://127.0.0.1:8081/getUser/" + username);
   }
 
   addUser(username: string, password: string): Observable<any> {
     const user: User = {username: username, password: password};
     return this.http.post("http://127.0.0.1:8081/api/users", user);
   }
-    
+
+  updateUser(id: string, username: string, password: string): Observable<any> {
+    const user: User = { username: username, password: password };
+    return this.http.put("http://localhost:8081/api/users/" + id, user);
+  }
 }
 
 

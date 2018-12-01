@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
     }
 
     if(this.password != this.rePassword){
-      this.errMessage = "Passwords does not match.";
+      this.errMessage = "Passwords do not match.";
       this.continue = false;
     }
 
