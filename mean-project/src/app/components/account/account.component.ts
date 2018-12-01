@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/users.service';
 import { NgForm } from "@angular/forms";
 import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account',
@@ -12,14 +13,16 @@ export class AccountComponent implements OnInit {
   user: any;
   sessUser: string;
   password: string = "*";
+  confPass: string;
   oldPass: string;
   newPass: string;
   retypePass: string;
-  show: boolean = false;
+  edit: boolean = false;
+  delete: boolean = false;
   continue: boolean = true;
   errMessage: string;
 
-  constructor(private us: UsersService, private snackBar: MatSnackBar) { }
+  constructor(private us: UsersService, private snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit() {
     this.sessUser = sessionStorage.getItem("username");
@@ -34,7 +37,13 @@ export class AccountComponent implements OnInit {
   }
 
   showEdit(){
-    this.show = true;
+    this.edit = true;
+    this.delete = false;
+  }
+
+  showDelete(){
+    this.delete = true;
+    this.edit = false;
   }
 
   editAccount(form: NgForm){
@@ -52,7 +61,7 @@ export class AccountComponent implements OnInit {
       this.errMessage = "Please enter the required fields";
     }
 
-    if(!(this.newPass.match(lowerCaseLetters) && this.newPass.match(upperCaseLetters) && this.newPass.match(numbers) && this.newPass.length > 8)){
+    if(!(this.newPass.match(lowerCaseLetters) && this.newPass.match(upperCaseLetters) && this.newPass.match(numbers) && this.newPass.length >= 8)){
       this.continue = false;
       this.errMessage = "Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters.";
     }
@@ -75,9 +84,32 @@ export class AccountComponent implements OnInit {
       this.snackBar.open("Password successfully changed", "OK", {
         duration: 3000,
       });
-      this.show = false;
+      this.edit = false;
     }
     
+  }
+
+  onDelete(){
+    if(this.confPass != this.user[0].password)
+      this.continue = false;
+
+    if(!this.continue) {
+      this.snackBar.open("Password incorrect", "OK", {
+        duration: 3000,
+      });
+      this.continue = true;
+      this.confPass = undefined;
+    } else {
+      this.snackBar.open("Account successfully deleted, logging out", "OK", {
+        duration: 3000,
+      });
+      setTimeout(()=>this.deleteAcc(), 3000);
+    }
+  }
+  
+  deleteAcc() {
+    this.us.deleteUser(this.user[0]._id).subscribe();
+    this.router.navigate([""]);
   }
 
 }

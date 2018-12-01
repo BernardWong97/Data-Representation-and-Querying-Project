@@ -30,6 +30,10 @@ export class UsersService {
     const user: User = { username: username, password: password };
     return this.http.put("http://localhost:8081/api/users/" + id, user);
   }
+
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete("http://localhost:8081/api/users/" + id);
+  }
 }
 
 

@@ -66,6 +66,11 @@ app.put('/api/users/:id', function(req,res){
     });
 })
 
+app.delete('/api/users/:id', function(req,res){
+    users.deleteOne({ _id: req.params.id },
+    function (err) {});
+})
+
 var server = app.listen(8081, function () {
    var host = server.address().address
    var port = server.address().port

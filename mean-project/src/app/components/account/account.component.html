@@ -16,8 +16,7 @@
           
                 <p>Username: {{sessUser}}</p>
                 <p>Password: {{password}}</p>
-                <button mat-raised-button color="warn" *ngIf="!show" (click)="showEdit()">Edit</button>
-                <mat-expansion-panel *ngIf="show">
+                <mat-expansion-panel *ngIf="edit">
                         <mat-expansion-panel-header>
                             <mat-panel-title>
                                 Edit Account
@@ -26,7 +25,7 @@
                                 Edit your account
                             </mat-panel-description>
                         </mat-expansion-panel-header>
-                        <form (submit)="editAccount(accForm)" #accForm="ngForm" id="editForm">
+                        <form (submit)="editAccount(accForm)" #accForm="ngForm">
                             <p>Username: {{user[0].username}}</p>
                             <mat-form-field>
                                     Old Password: 
@@ -67,6 +66,34 @@
                             </button>
                         </form>
                 </mat-expansion-panel>
+
+                <mat-expansion-panel *ngIf="delete">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Delete Account
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                Delete your account
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                            <h1>To confirm account deletion, please input password</h1>
+                            <p>Username: {{user[0].username}}</p>
+                            <p>Password: 
+                                <input matInput
+                                    name="password"
+                                    [(ngModel)]="confPass"
+                                    type="password"
+                                    required
+                                    #pw="ngModel">
+                            <mat-error *ngIf="pw.invalid"> Please enter old password.</mat-error>
+                            </p>
+                            <br>
+                            <button mat-raised-button color="accent" (click)="onDelete()">
+                                Delete Account
+                            </button>
+                </mat-expansion-panel>
+                <button mat-raised-button color="warn" *ngIf="!edit" (click)="showEdit()">Edit</button>
+                <button mat-raised-button color="warn" *ngIf="!delete" (click)="showDelete()">Delete</button>
             </mat-expansion-panel>
           </mat-accordion>
     </mat-card-content>
