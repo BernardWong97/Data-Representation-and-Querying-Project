@@ -26,4 +26,9 @@ export class AppComponent {
       data => this.login = data
     );
   }
+
+  navHome(){
+    if(this.login)
+      this.router.navigate(['/movie-database']);
+  }
 }

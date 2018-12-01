@@ -2,3 +2,7 @@
     /* This fills the remaining space, by using flexbox.*/
     flex: 1 1 auto;
 }
+
+span:hover {
+    cursor: pointer;
+}

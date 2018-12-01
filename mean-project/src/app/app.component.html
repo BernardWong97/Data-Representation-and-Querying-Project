@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <span>Movie Database</span>
+  <span (click)="navHome()" cursor="pointer">Movie Database</span>
   <span class="fill-remaining-space"></span>
   <div *ngIf="login">
     <button mat-icon-button [matMenuTriggerFor]="menu">
