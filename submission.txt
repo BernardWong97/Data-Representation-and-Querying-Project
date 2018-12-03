@@ -1,0 +1,4 @@
+Data Representation And Querying Project
+Name: Bernard Wong Wei Cheng
+Student ID: G00341962
+Github Repository Link: https://github.com/BernardWong97/Data-Representation-and-Querying-Project
