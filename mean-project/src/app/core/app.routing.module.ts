@@ -15,16 +15,16 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'movie-database', component: PostDetailsComponent },
     { path: 'movie-details/:index', component: MovieDetailsComponent },
-    { path: 'account', component: AccountComponent}
-];
+    { path: 'account', component: AccountComponent }
+]; // All the routing paths
 
 @NgModule({
     imports: [
         RouterModule.forRoot(appRoutes)
-      ],
-      exports: [
+    ],
+    exports: [
         RouterModule
-      ],
-      declarations: []
+    ],
+    declarations: []
 })
 export class AppRoutingModule { }

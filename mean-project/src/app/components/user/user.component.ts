@@ -8,20 +8,13 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  users: any = [];
   lgUser: any;
 
   constructor(private us: UsersService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.us.getUsersData().subscribe(data =>
-      {
-        this.users = data.users;
-      });
-    console.log("Users data successfully get.");
-    
+    // Take username from route parameter
     this.lgUser = this.route.snapshot.params['username'];
-    setTimeout(()=>this.router.navigate(["movie-database"]), 3000);
-  }
-
-}
+    setTimeout(() => this.router.navigate(["movie-database"]), 3000);
+  } // ngOnInit()
+} // class

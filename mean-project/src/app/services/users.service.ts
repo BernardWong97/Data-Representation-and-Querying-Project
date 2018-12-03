@@ -8,33 +8,29 @@ import { User } from './user.model';
 })
 
 export class UsersService {
-  private users: User[] = [];
 
   constructor(private http: HttpClient) { }
 
-  // get user login credentials from mongo database
+  // Get user login credentials from mongo database
   getUsersData(): Observable<any> {
     return this.http.get("http://127.0.0.1:8081/api/users");
-  }
-  
+  } // getUsersData()
+
   getUser(username) {
     return this.http.get("http://127.0.0.1:8081/getUser/" + username);
-  }
+  } // getUser()
 
   addUser(username: string, password: string): Observable<any> {
-    const user: User = {username: username, password: password};
+    const user: User = { username: username, password: password };
     return this.http.post("http://127.0.0.1:8081/api/users", user);
-  }
+  } // addUser()
 
   updateUser(id: string, username: string, password: string): Observable<any> {
     const user: User = { username: username, password: password };
     return this.http.put("http://localhost:8081/api/users/" + id, user);
-  }
+  } // updateUser()
 
   deleteUser(id: string): Observable<any> {
     return this.http.delete("http://localhost:8081/api/users/" + id);
-  }
-}
-
-
-
+  } // deleteUser()
+} // class

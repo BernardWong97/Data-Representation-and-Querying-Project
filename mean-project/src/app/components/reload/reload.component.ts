@@ -12,8 +12,8 @@ export class ReloadComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    // Take which component to reload and route back to it
     this.componentName = this.route.snapshot.params['component'];
     this.router.navigate([this.componentName]);
-  }
-
-}
+  } // ngOnInit()
+} // class

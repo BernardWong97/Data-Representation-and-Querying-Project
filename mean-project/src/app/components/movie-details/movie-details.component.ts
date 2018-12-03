@@ -17,11 +17,11 @@ export class MovieDetailsComponent implements OnInit {
   ngOnInit() {
     console.log("Movie data successfully get.");
 
+    // Take index from routing parameter
     this.index = this.route.snapshot.params['index'];
 
-    // get movie data from post service
     this.ps.getPostsData().subscribe(data => {
       this.movie = data.results[this.index];
-    });
-  }
-}
+    }); // Get index movie data from Post Service
+  } // ngOnInit()
+} // class

@@ -12,9 +12,10 @@ export class AppComponent {
   title = 'mean-project';
   login: boolean = true;
 
-  constructor(private router: Router, public dialog: MatDialog) {}
+  constructor(private router: Router, public dialog: MatDialog) { }
 
-  openDialog(){
+  openDialog() {
+    // Open dialog component when user tries to log out
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
@@ -23,12 +24,13 @@ export class AppComponent {
     const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
-      data => this.login = data
+      data => this.login = data // returns false if user decline dialog so the account menu stays
     );
-  }
+  } // openDialog()
 
-  navHome(){
-    if(this.login)
+  navHome() {
+    // Go to main page when user clicks the title on the bar (does not work when logged out)
+    if (this.login)
       this.router.navigate(['/movie-database']);
-  }
-}
+  } // navHome()
+} // class

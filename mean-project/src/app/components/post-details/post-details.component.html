@@ -1,3 +1,4 @@
+<!--Main page of the app, show most popular movies-->
 <mat-list>
     <mat-list-item class="lists" matRipple [matRippleCentered]="true" *ngFor="let m of movies; let i = index" (click)="showOverview(i)">
         <p mat-line>{{m.title}}</p>

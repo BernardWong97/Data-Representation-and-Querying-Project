@@ -12,14 +12,16 @@ export class DialogComponent implements OnInit {
   constructor(private router: Router, private dialogRef: MatDialogRef<DialogComponent>) { }
 
   ngOnInit() {
-  }
+  } // ngOnInit()
 
   save() {
+    // User confirms
     this.dialogRef.close(false);
     this.router.navigate([""]);
-  }
+  } // save()
 
   close() {
+    // User denies
     this.dialogRef.close(true);
-  }
-}
+  } // close()
+} // class

@@ -1,60 +1,60 @@
+<!--User account registration-->
 <mat-card class="register-card">
   <mat-card-header>
     <mat-card-title class="card-title">Register</mat-card-title>
   </mat-card-header>
+
   <mat-card-content>
     <form (submit)="onAddUser(userForm)" #userForm="ngForm">
       <table cellspacing="0">
         <tr>
           <td>
             <mat-form-field>
-              <input matInput placeholder="Username" [(ngModel)]="username" [disabled]="!continue" name="username" pattern=".{5,}" required>
+              <input matInput placeholder="Username" [(ngModel)]="username" [disabled]="!continue" name="username"
+                pattern=".{5,}" required>
             </mat-form-field>
           </td>
         </tr>
+
         <tr>
           <td>
             <mat-form-field>
-              <input 
-                matInput 
-                id="pwField" 
-                placeholder="Password" 
-                [(ngModel)]="password" 
-                [disabled]="!continue"
-                type="password" 
-                name="password"  
-                required
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
-                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+              <input matInput id="pwField" placeholder="Password" [(ngModel)]="password" [disabled]="!continue" type="password"
+                name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
             </mat-form-field>
           </td>
         </tr>
+
         <tr>
           <td>
             <mat-form-field>
-              <input matInput id="rpwField" placeholder="Confirm Password" [disabled]="!continue" [(ngModel)]="rePassword" type="password" name="rePassword" required>
+              <input matInput id="rpwField" placeholder="Confirm Password" [disabled]="!continue" [(ngModel)]="rePassword"
+                type="password" name="rePassword" required>
             </mat-form-field>
           </td>
         </tr>
       </table>
+
       <mat-card-actions>
-          <button mat-raised-button [disabled]="!continue" id="regSubmit" (click)="register()" type="submit" color="primary">Register</button>
-          <button mat-raised-button [disabled]="!continue" [routerLink]="['/']" color="primary">Back</button>
+        <button mat-raised-button [disabled]="!continue" id="regSubmit" (click)="register()" type="submit" color="primary">Register</button>
+        <button mat-raised-button [disabled]="!continue" [routerLink]="['/']" color="primary">Back</button>
       </mat-card-actions>
     </form>
   </mat-card-content>
 </mat-card>
 
+<!--Password Validation-->
 <div [hidden]="!display">
   <mat-card class="password-card">
     <mat-card-header>
       <mat-card-title class="pw-font">Password must contain the following:</mat-card-title>
     </mat-card-header>
+    
     <mat-card-content class="pw-font">
-        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-        <p id="number" class="invalid">A <b>number</b></p>
-        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+      <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+      <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+      <p id="number" class="invalid">A <b>number</b></p>
+      <p id="length" class="invalid">Minimum <b>8 characters</b></p>
     </mat-card-content>
   </mat-card>
 </div>
